@@ -13,12 +13,18 @@ export const Container = styled(animated.div)`
     border: 2px solid transparent;
     background-clip: border-box;
     cursor: pointer;
+    @media only screen and (max-width: 600px){
+        width: 110px;
+    }
 `;
 
 export const StyledImg = styled.img`
     width: 180px;
     height: auto;
     border: 2px solid #000;
+    @media only screen and (max-width: 600px){
+        width: 100px;
+    }
 `;
 
 export const StyledH1 = styled.h1`
@@ -26,10 +32,17 @@ export const StyledH1 = styled.h1`
     letter-spacing: 0.5;
     font-size: 19px;
     font-family: 'Abel', sans-serif;
+    @media only screen and (max-width: 600px){
+        font-size: 10px;
+        letter-spacing: 0.3;
+    }
 `;
 
 export const StyledH3 = styled.h3`
     line-height: 0.6;
     font-family: 'Abel', sans-serif;
     font-size: 10px;
+    @media only screen and (max-width: 600px){
+        font-size: 7px;
+    }
 `;
