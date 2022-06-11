@@ -21,7 +21,7 @@ function Maprender({robots , data , loading}) {
   
 
 
-return loading? (<div>
+return loading? (<div style={{ position: "absolute" , top:"36%" , left:"37%" }}>
    <XlviLoaderComponent/>
       </div>) :(
      <div>
