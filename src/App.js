@@ -11,13 +11,15 @@ function App() {
   const [ robots , setRobots] = useState([]);
 
   useEffect(() => {
-    const socket = io("https://rapyuta.herokuapp.com/");
+    const socket = io("https://rapyuta.herokuapp.com");
     socket.on("robots" , (msg) => {
       setRobots(msg)
     })
   } , []);
+
   const { data , loading , error} = useFetch("https://rapyuta.herokuapp.com/api/products");
-  console.log(data)
+  
+  console.log(robots)
   return (
     <div>
         <Maprender data={data} robots={robots} loading={loading}/>

@@ -1,8 +1,5 @@
-import Map, { FullscreenControl , NavigationControl , GeolocateControl ,Popup , Marker} from "react-map-gl";
-// import 'react-map-gl-directions/dist/mapbox-gl-directions.css'
-// import Directions from 'react-map-gl-directions'
-
 import {  useState } from "react";
+import Map, { FullscreenControl , NavigationControl , GeolocateControl ,Popup , Marker} from "react-map-gl";
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
@@ -26,8 +23,8 @@ function Maprender({robots , data , loading}) {
 
 return loading? (<div>
    <XlviLoaderComponent/>
-</div>) :(
-    <div>
+      </div>) :(
+     <div>
         <Map
           initialViewState={viewport}
           style={{width: '98vw', height: '90vh'}}
@@ -37,6 +34,7 @@ return loading? (<div>
           <FullscreenControl />
           <NavigationControl />
           <GeolocateControl/>
+
          {robots.length > 0 &&
           robots.map((item)=> 
           <>
@@ -44,14 +42,15 @@ return loading? (<div>
               <SmartToyOutlinedIcon style={{fontSize:viewport.zoom * 10 , color:"#09C97F" , cursor: "pointer"}} onClick={() => handleMarkerClick(item._id)} />
           </Marker>
            {item._id === currentPlaceId && 
-           <Popup longitude={item?.location?.coordinates[0]} latitude={item?.location?.coordinates[1]}
-            anchor="left"
-            closeOnClick={false}
-            onClose={() => setCurrentPlaceId(null)}>
-            <RobotCard key={item.id} item={item}/>
-      </Popup>}  
+            <Popup longitude={item?.location?.coordinates[0]} latitude={item?.location?.coordinates[1]}
+              anchor="left"
+              closeOnClick={false}
+              onClose={() => setCurrentPlaceId(null)}>
+              <RobotCard key={item.id} item={item}/>
+            </Popup>}  
           </>
           )}
+
           {data.length > 0 &&
           data.map((item)=> 
           <>
@@ -59,16 +58,17 @@ return loading? (<div>
               <ShoppingCartOutlinedIcon style={{fontSize:viewport.zoom * 10 , color:"#F79500" , cursor: "pointer"}} onClick={() => handleMarkerClick(item._id)} />
           </Marker>
           {item._id === currentPlaceId && 
-           <Popup longitude={item?.location?.coordinates[0]} latitude={item?.location?.coordinates[1]}
-            anchor="left"
-            closeOnClick={false}
-            onClose={() => setCurrentPlaceId(null)}>
-            <ProductCard key={item.id} item={item}/>
-          </Popup>}  
+            <Popup longitude={item?.location?.coordinates[0]} latitude={item?.location?.coordinates[1]}
+              anchor="left"
+              closeOnClick={false}
+              onClose={() => setCurrentPlaceId(null)}>
+              <ProductCard key={item.id} item={item}/>
+            </Popup>}  
           </>
           )}
+
          </Map>
-        </div>
+      </div>
     )
 }
 
